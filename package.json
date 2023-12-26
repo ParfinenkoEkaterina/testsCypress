@@ -6,7 +6,15 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress open",
+    "testHeadlessChromeMobile": "cypress run --config-file cypress.mobile.js --headless --browser chrome",
+    "testHeadedChromeMobile": "cypress run --config-file cypress.mobile.js --headed --browser chrome",
+    "testHeadlessElectronMobile": "cypress run --config-file cypress.mobile.js --headless --browser electron",
+    "testHeadedElectronMobile": "cypress run --config-file cypress.mobile.js --headed --browser electron",
+    "testHeadlessChromeLaptop": "cypress run --config-file cypress.laptop.js --headed --browser chrome",
+    "testHeadedChromeLaptop": "cypress run --config-file cypress.laptop.js --headed --browser chrome",
+    "testHeadlessElectronLaptop": "cypress run --config-file cypress.laptop.js --headed --browser electron",
+    "testHeadedElectronLaptop": "cypress run --config-file cypress.laptop.js --headed --browser electron"
   },
   "author": "",
   "license": "ISC",
