@@ -34,7 +34,7 @@ describe('template spec', () => {
     cy.contains('Book description').should('be.visible') 
   })
 
-  it('test add new book', () => {
+  it ('test add new book', () => {
     cy.login(email,pass)
     cy.contains('Добро пожаловать bropet@mail.ru').should('be.visible') 
     cy.get('.p-0 > .btn').click()
@@ -47,11 +47,22 @@ describe('template spec', () => {
     cy.get('form > .ml-2').click()
   })
 
-  it ('Delete and add favorite', () => {
-    cy.login(email,pass)
-    cy.get('.d-flex')
-    cy.get('[href="book/6a0d3727-318b-4c9b-a13c-cbf13526824a"] > .h-100')
-    cy.get('[href="book/6a0d3727-318b-4c9b-a13c-cbf13526824a"] > .h-100 > .card-footer > .btn').click()
-    cy.get('[href="book/6a0d3727-318b-4c9b-a13c-cbf13526824a"] > .h-100 > .card-footer > .btn').click()
+ it('Add to favorite', () => { 
+    cy.login(email,pass);
+    cy.get('.d-flex');
+    cy.contains('Delete from favorite').click();
+    cy.contains('Add to favorite').click();
+    cy.contains('Favorites').click();
+    cy.contains('Денискины рассказы').should('be.visible');
+  });
+  
+  it('Delete from favorite', () => {
+    cy.login(email,pass);
+    cy.get('.d-flex');
+    cy.contains('Favorites').click();
+    cy.contains('Delete from favorite').click();
+    cy.contains('Please add some book to favorit on home page!').should('be.visible');
+    cy.contains('Books list').click();
+    cy.contains('Add to favorite').click();
   });
 })
